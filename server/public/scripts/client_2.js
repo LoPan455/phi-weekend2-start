@@ -18,10 +18,7 @@ $(document).ready(function(){
         $('#nextButton').on('click',function(){
           toggleHighlighting();
           clickNumber++;
-          if(clickNumber > phirephitersArray.length - 1){
-            clickNumber = 0;
-          }
-
+          minMaxCheck(phirephitersArray);
           cyclingThroughPeeps();
           toggleHighlighting();
         })
@@ -29,45 +26,29 @@ $(document).ready(function(){
         $('#prevButton').on('click',function(){
           toggleHighlighting();
           clickNumber--;
-          if(clickNumber < 0){
-            clickNumber = phirephitersArray.length - 1
-          }
-          console.log(clickNumber);
+          minMaxCheck(phirephitersArray);
           cyclingThroughPeeps();
           toggleHighlighting();
-        })
-        //   goToNextThankYou(phirephitersArray);
-        // });
-        //
-        // //previous button click event handler
-        // $('#prevButton').on('click',function(){
-        //   goToPrevThankYou(phirephitersArray);
-        // });
-        // //sets the interval to execute the same code as the next button. create the slide-show effect
+          })
+
+        //sets the interval to execute the same code as the next button. create the slide-show effect
         setInterval(function(){
           toggleHighlighting();
           clickNumber++;
           if(clickNumber > phirephitersArray.length - 1){
             clickNumber = 0;
           }
-
           cyclingThroughPeeps();
           toggleHighlighting();
-        },slideShowInterval);
-
-
+          },slideShowInterval);
 
       }
-
   });
-
-
-
 });
 
-var clickNumber = 0
-var slideShowInterval = 5000
-var peopleArray = [];
+var clickNumber = 0 //used to track the visual indicator elements
+var slideShowInterval = 5000 //Interval for the slide show
+var peopleArray = []; //houses our people objects so we can run functions against them upon data load
 
 
 
@@ -78,11 +59,12 @@ function buildShoutOutPeepsArray(array){
   }
 }
 
+//writes out each person's info and shout-out when called.
 function appendPersonToDom(person){
     $('#thePhirephitersList').append('<p class="thankYouContent" id="personName">Name: '+person.name+'</p>');
     $('#thePhirephitersList').append('<p class="thankYouContent" id="personGitUserName">git_username: '+person.git_username+'</p>');
     $('#thePhirephitersList').append('<p class="thankYouContent" id="personShoutout">shoutout: '+person.shoutout+'</p>');
-    //$('#thePhirephitersList').append('<img src="'+person.image+'" alt="person image" />');
+
 }
 
 //writes a person's info to the DOM
@@ -97,20 +79,27 @@ function cyclingThroughPeeps(){
   buildTheDOM(peopleArray);
 }
 
+//builds the position indicator squares for each person in the peson
 function buildIndicatorUnits(array){
 console.log('running Build inidcator units against: ',array.length);
   for (var i = 0; i < array.length; i++) {
     $('#progressIndicator').append('<div class="indicatorUnit" id="'+i+'"></div>');
     $('#'+i+'').css('background-image','url("'+array[i].image+'")')
-    // $('#progressIndicator').text('hey some text')
-
-  }
+    }
 }
 
+//toggles whether or not a visual indicator div is highlighted
 function toggleHighlighting(){
   $('[id="'+clickNumber+'"]').toggleClass('highlight');
 }
 
-function nextButtonPress(){
-
+//helps loop the highlighted visual element around when next or previous is clicked.
+function minMaxCheck(array){
+  if(clickNumber > array.length - 1){
+    clickNumber = 0;
+  } else if (clickNumber < 0){
+    clickNumber = array.length - 1;
+  }
 }
+
+//
