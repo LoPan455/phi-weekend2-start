@@ -3,22 +3,31 @@
   <head>
     <title>Weekend Challenge 2</title>
     <link rel="stylesheet" href="/styles/style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <script type="text/javascript" src="/vendor/jquery.min.js"></script>
-    <script type="text/javascript" src="/scripts/client.js"></script>
+    <script type="text/javascript" src="/scripts/client_2.js"></script>
+
 
   </head>
+  <!-- <audio source src="/views/thememusic.mp3" autoplay="autoplay" loop></audio> -->
+
   <body>
     <h1>Weekend Challenge 2</h1>
     <h2>Who's giving a shout out??</h2>
+
     <div id="thePhirephitersList">
       </div>
-    <div id="nextButton">
-      <button id="nextButton" type="button" name="nextButton">Next PhirePhiter</button>
+
+    <div id="progressIndicatorSection">
+      <div class="progressIndicatorSectionElements" id="prevButton">
+        <i class="material-icons">skip_previous</i>
+        </div>
+      <div class="progressIndicatorSectionElements" id="progressIndicator">
+        </div>
+      <div class="progressIndicatorSectionElements" id="nextButton">
+        <i class="material-icons">skip_next</i>
+        </div>
       </div>
-    <div id="prevButton">
-      <button id="prevButton" type="button" name="prevButton">Previous PhirePhiter</button>
-      </div>
-    <div id="progressIndicator">
-      </div>
+
   </body>
 </html>

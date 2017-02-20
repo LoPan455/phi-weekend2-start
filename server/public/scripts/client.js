@@ -6,48 +6,38 @@ $(document).ready(function(){
       url: "/data",
       success: function(data){
         // yay! we have data!
-        console.log('returned data from server: ', data);
-        console.log('the length of the array I found is: ',data.phirephiters.length);
-        writeShoutOutsToDom(data.phirephiters);
-        buildIndicatorUnits(data.phirephiters);
+        var phirephitersArray = data.phirephiters
+        writeShoutOutsToDom(phirephitersArray);
+        buildIndicatorUnits(phirephitersArray);
         toggleHighlighting();
 
         //next button click event handler
         $('#nextButton').on('click',function(){
-          toggleHighlighting();
-          clickNumber++;
-          if(clickNumber > data.phirephiters.length - 1){
-              clickNumber = 0;
-            };
-          $('#thePhirephitersList').empty();
-          writeShoutOutsToDom(data.phirephiters);
-          toggleHighlighting();
+          goToNextThankYou(phirephitersArray);
         });
 
         //previous button click event handler
         $('#prevButton').on('click',function(){
-          toggleHighlighting();
-          clickNumber--;
-          if(clickNumber < 0){
-              clickNumber = data.phirephiters.length - 1;
-          };
-          console.log('the value of clickNumber is: ',clickNumber);
-          $('#thePhirephitersList').empty();
-          writeShoutOutsToDom(data.phirephiters)
-          toggleHighlighting();
+          goToPrevThankYou(phirephitersArray);
         });
+        //sets the interval to execute the same code as the next button. create the slide-show effect
+        setInterval(function(){goToNextThankYou(phirephitersArray);},slideShowInterval);
       }
+
   });
 });
 
 var clickNumber = 0
+var slideShowInterval = 5000
 
-//append the DOM to write out the key values for each object in the source array
+//append the DOM to write out the key values for ONE object in the source array.
+//The object to be written is found at the index bound to the clickNumber
 function writeShoutOutsToDom(array){
-    var minimizedName = array[clickNumber].name.replace(/\s/g,''); //remove spaces in array[i].name key values to use in HTML id attrtibutes
-    $('#thePhirephitersList').append('<h2 class="name" id="'+minimizedName+'">Name: '+array[clickNumber].name+'</h2>');
-    $('#thePhirephitersList').append('<p class="gitUserName" id="'+array[clickNumber].git_username+'">git_username: '+array[clickNumber].git_username+'</p>');
-    $('#thePhirephitersList').append('<p class="shoutout">shoutout: '+array[clickNumber].shoutout+'</p>');
+    $('#thePhirephitersList').append('<p class="thankYouContent" id="personName">Name: '+array[clickNumber].name+'</p>');
+    $('#thePhirephitersList').append('<p class="thankYouContent" id="personGitUserName">git_username: '+array[clickNumber].git_username+'</p>');
+    $('#thePhirephitersList').append('<p class="thankYouContent" id="personShoutout">shoutout: '+array[clickNumber].shoutout+'</p>');
+    $('#thePhirephitersList').fadeIn();
+    //$('#thePhirephitersList').append('<img src="'+array[clickNumber].image+'" alt="person image" />');
   }
 
 // builds the visual indicator elements
@@ -56,9 +46,33 @@ function buildIndicatorUnits(array){
     $('#progressIndicator').append('<div class="indicatorUnit" data-indexnumber="'+i+'"></div>')
   }
 }
-//changes the highlighted indicator box 
+
+//changes the highlighted indicator box
 function toggleHighlighting(){
   $('[data-indexnumber="'+clickNumber+'"]').toggleClass('highlight');
 }
 
+function goToNextThankYou(array){
+
+  toggleHighlighting();
+  clickNumber++;
+  if(clickNumber > array.length - 1){
+      clickNumber = 0;
+    };
+  $('#thePhirephitersList').fadeOut()
+  $('#thePhirephitersList').empty();
+  writeShoutOutsToDom(array);
+  toggleHighlighting();
+  }
+
+function goToPrevThankYou(array){
+  toggleHighlighting();
+  clickNumber--;
+  if(clickNumber < 0){
+      clickNumber = array.length - 1;
+    };
+  $('#thePhirephitersList').empty();
+  writeShoutOutsToDom(array)
+  toggleHighlighting();
+}
 //end

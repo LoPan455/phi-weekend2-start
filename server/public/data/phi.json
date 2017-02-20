@@ -3,87 +3,105 @@
     {
       "name" : "Melissa E Hare",
       "git_username" : "Melissa-Elizabeth",
-      "shoutout" : ""
-    },
+      "shoutout" : "",
+			"image" : "https://ca.slack-edge.com/T03G13KK1-U3K6LLM4N-4e45b3728390-72"
+		},
     {
       "name" : "Chad Sundberg",
       "git_username" : "chadsundberg",
-      "shoutout" : "Celina!!  She taught me how to use two fingers to scroll in my open windows!  Oh, and I'd like to thank var taco!"
+      "shoutout" : "Celina!!  She taught me how to use two fingers to scroll in my open windows!  Oh, and I'd like to thank var taco!",
+			"image" : "https://ca.slack-edge.com/T03G13KK1-U3J5JCGNR-4e8094085ae2-48"
     },
     {
       "name" : "Christine Pogatchnik",
       "git_username" : "kikipogo",
-      "shoutout" : "Everyone"
+      "shoutout" : "Everyone",
+			"image" : "https://ca.slack-edge.com/T03G13KK1-U3JCGH1AP-g6c3bec6152d-48"
     },
     {
       "name" : "Thomas Johander",
       "git_username" : "lopan455",
-      "shoutout" : "Yo! Thanks for that!"
+      "shoutout" : "Yo! Thanks for that!",
+			"image" : "https://ca.slack-edge.com/T03G13KK1-U3J0QEC3V-8d6e20c02a1d-48"
     },
     {
       "name" : "Edmund Wippler",
       "git_username" : "edwippler",
-      "shoutout" : ""
+      "shoutout" : "",
+			"image" : "https://ca.slack-edge.com/T03G13KK1-U3J9CC59S-gb3ae4337301-48"
     },
     {
       "name" : "Jonny Holupchinski",
       "git_username" : "jonholup",
-      "shoutout" : ""
+      "shoutout" : "",
+			"image" : "https://ca.slack-edge.com/T03G13KK1-U3JSA4JV8-f9cc99625a4d-48"
     },
     {
       "name" : "Catherine Jarocki",
       "git_username" : "cjaro",
-      "shoutout" : "Thank you to the internet of resources!"
+      "shoutout" : "Thank you to the internet of resources!",
+			"image" : "https://ca.slack-edge.com/T03G13KK1-U3JQZ63F0-g0484f5635f5-48"
     },
     {
       "name" : "Kris Jensen",
       "git_username" : "kristinejensen",
-      "shoutout" : "Thank you to Luke, Kris, and Chris for being great instructors!"
+      "shoutout" : "Thank you to Luke, Kris, and Chris for being great instructors!",
+			"image" : "https://ca.slack-edge.com/T03G13KK1-U3JUPBE3W-g1e280c4ebe3-48"
     },
     {
       "name" : "Paul Dunkirk",
       "git_username" : "pauldunkirk",
-      "shoutout" : "Phi peops rock!"
+      "shoutout" : "Phi peops rock!",
+			"image" : "https://ca.slack-edge.com/T03G13KK1-U3JPVEB1R-54878a873526-48"
     },
     {
       "name" : "Celina",
       "git_username" : "celina",
-      "shoutout" : "Peace out!"
+      "shoutout" : "Peace out!",
+			"image" : "https://ca.slack-edge.com/T03G13KK1-U3HEBGMJM-g8e63891a32d-48"
     },
     {
       "name" : "Chris Stanton",
       "git_username" : "chris-stanton",
-      "shoutout" : ""
+      "shoutout" : "",
+			"image" : "https://ca.slack-edge.com/T03G13KK1-U3J9LC88L-992030bece01-48"
     },
     {
       "name" : "Philip Curtis",
       "git_username" : "PCSailor",
-      "shoutout" : "Thanks to Luke and Kris, and Chris, Scott, & Fred"
+      "shoutout" : "Thanks to Luke and Kris, and Chris, Scott, & Fred",
+			"image" : "https://ca.slack-edge.com/T03G13KK1-U3JTJMFHC-1d349fa00684-48"
     },
     {
       "name" : "Sam Velie",
       "git_username" : "samvelie",
-      "shoutout" : "Love y'all "
+      "shoutout" : "Love y'all ",
+			"image" : "https://ca.slack-edge.com/T03G13KK1-U3K6GRE87-c675724ea8dd-48"
+
     },
     {
       "name" : "Paige Bystrom",
       "git_username" : "Radmint",
-      "shoutout" : "Thanks to Phi cohort for being awesome, positive people! "
+      "shoutout" : "Thanks to Phi cohort for being awesome, positive people! ",
+			"images" : "https://ca.slack-edge.com/T03G13KK1-U3J128QR1-3fa1e320c6a0-72"
     },
     {
       "name" : "Jeremy Leif",
       "git_username" : "JL-golf14",
-      "shoutout" : "break down the Phirewalls of doubt!!!"
+      "shoutout" : "break down the Phirewalls of doubt!!!",
+			"image" : "https://ca.slack-edge.com/T03G13KK1-U3K8NHM4L-397a65c3b74b-48"
     },
     {
       "name" : "Kris Szafranski",
       "git_username" : "kdszafranski",
-      "shoutout" : "Thank you to Phi for your open, warm, and thoughtful speeches. You rekindle my faith in humanity!"
+      "shoutout" : "Thank you to Phi for your open, warm, and thoughtful speeches. You rekindle my faith in humanity!",
+			"image" : "https://ca.slack-edge.com/T03G13KK1-U09TP06FN-7d9270eb5a7f-48"
     },
     {
       "name" : "Luke Schlangen",
       "git_username" : "lukeschlangen",
-      "shoutout" : "Huge thanks to everyone in Phi for sharing such personal and inspiring stories about change."
+      "shoutout" : "Huge thanks to everyone in Phi for sharing such personal and inspiring stories about change.",
+			"image" : "https://ca.slack-edge.com/T03G13KK1-U2APF8DHN-b571caa6997a-48"
     }
   ]
 }

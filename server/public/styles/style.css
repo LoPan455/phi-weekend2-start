@@ -1,23 +1,44 @@
-.name {
+#personName {
   color: blue;
 }
 
-.gitUserName {
+#personGitUserName {
   color: green
+
 }
 
-.shoutout {
+#personShoutout {
   color: red
 }
 
+/*#thePhirephitersList{
+  opacity: 0;
+}*/
+
+.progressIndicatorSectionElements {
+  display: inline-block;
+}
+
+/*#thePhirephitersList {
+  width: 400px;
+  height: 200px;
+}*/
+
+.material-icons {
+  font-size: 96px;
+
+}
 
 .indicatorUnit {
   width: 50px;
   height: 50px;
   border: 1px solid black;
   display: inline-block;
+  margin: 10px 10px 10px 10px;
+  
 }
 
 .indicatorUnit.highlight{
-  background-color: red;
+  border-width: medium;
+  border-color: red;
 }
