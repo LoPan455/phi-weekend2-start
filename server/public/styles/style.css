@@ -11,23 +11,19 @@
   color: red
 }
 
-/*#thePhirephitersList{
-  opacity: 0;
-}*/
-
 .progressIndicatorSectionElements {
   display: inline-block;
 }
 
-/*#thePhirephitersList {
+#thePhirephitersList {
   width: 400px;
   height: 200px;
-}*/
-
-.material-icons {
-  font-size: 96px;
-
 }
+
+.thankYouContent {
+  display: none;
+}
+
 
 .indicatorUnit {
   width: 50px;
@@ -35,7 +31,7 @@
   border: 1px solid black;
   display: inline-block;
   margin: 10px 10px 10px 10px;
-  
+
 }
 
 .indicatorUnit.highlight{

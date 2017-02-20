@@ -8,11 +8,10 @@ $(document).ready(function(){
         // yay! we have data!
         var phirephitersArray = data.phirephiters  //gives me a 'nickname' for what I want
 
-        buildShoutOutPeepsArray(phirephitersArray);
-        console.log("peopleArray length is: ",peopleArray.length);
-        buildTheDOM(peopleArray);
-        buildIndicatorUnits(peopleArray);
-        toggleHighlighting();
+        buildShoutOutPeepsArray(phirephitersArray); //puts all items into the 'working' array
+        buildTheDOM(peopleArray); //builds each person's info on the DOM
+        buildIndicatorUnits(peopleArray); //contructs the visual indicator units
+        toggleHighlighting(); //turns on highlighting for the first indicator unit
 
         // //next button click event handler
         $('#nextButton').on('click',function(){
@@ -35,9 +34,7 @@ $(document).ready(function(){
         setInterval(function(){
           toggleHighlighting();
           clickNumber++;
-          if(clickNumber > phirephitersArray.length - 1){
-            clickNumber = 0;
-          }
+          minMaxCheck(phirephitersArray);
           cyclingThroughPeeps();
           toggleHighlighting();
           },slideShowInterval);
@@ -64,6 +61,7 @@ function appendPersonToDom(person){
     $('#thePhirephitersList').append('<p class="thankYouContent" id="personName">Name: '+person.name+'</p>');
     $('#thePhirephitersList').append('<p class="thankYouContent" id="personGitUserName">git_username: '+person.git_username+'</p>');
     $('#thePhirephitersList').append('<p class="thankYouContent" id="personShoutout">shoutout: '+person.shoutout+'</p>');
+    $('.thankYouContent').fadeIn(3000)
 
 }
 
