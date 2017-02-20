@@ -6,73 +6,105 @@ $(document).ready(function(){
       url: "/data",
       success: function(data){
         // yay! we have data!
-        var phirephitersArray = data.phirephiters
-        writeShoutOutsToDom(phirephitersArray);
-        buildIndicatorUnits(phirephitersArray);
-        toggleHighlighting();
+        var phirephitersArray = data.phirephiters  //gives me a 'nickname' for what I want
+
+        buildShoutOutPeepsArray(phirephitersArray); //puts all items into the 'working' array
+        buildTheDOM(peopleArray); //builds each person's info on the DOM
+        buildIndicatorUnits(peopleArray); //contructs the visual indicator units
+        toggleHighlighting(); //turns on highlighting for the first indicator unit
 
         //next button click event handler
         $('#nextButton').on('click',function(){
-          goToNextThankYou(phirephitersArray);
-        });
-
-        //previous button click event handler
+          clearInterval(timingInterval);
+          nextPhirephiter(phirephitersArray);
+        })
+        //previous button event handler
         $('#prevButton').on('click',function(){
-          goToPrevThankYou(phirephitersArray);
-        });
-        //sets the interval to execute the same code as the next button. create the slide-show effect
-        setInterval(function(){goToNextThankYou(phirephitersArray);},slideShowInterval);
-      }
+          clearInterval(timingInterval);
+          previousPhirephiter(phirephitersArray);
+        })
 
+        //sets the interval to execute the same code as the next button. create the slide-show effect
+        var timingInterval = setInterval(function(){
+          nextPhirephiter(phirephitersArray);
+        },slideShowInterval);
+
+      }
   });
 });
 
-var clickNumber = 0
-var slideShowInterval = 5000
+var clickNumber = 0 //used to track the visual indicator elements
+var slideShowInterval = 10000 //Interval for the slide show
+var peopleArray = []; //houses our people objects so we can run functions against them upon data load
 
-//append the DOM to write out the key values for ONE object in the source array.
-//The object to be written is found at the index bound to the clickNumber
-function writeShoutOutsToDom(array){
-    $('#thePhirephitersList').append('<p class="thankYouContent" id="personName">Name: '+array[clickNumber].name+'</p>');
-    $('#thePhirephitersList').append('<p class="thankYouContent" id="personGitUserName">git_username: '+array[clickNumber].git_username+'</p>');
-    $('#thePhirephitersList').append('<p class="thankYouContent" id="personShoutout">shoutout: '+array[clickNumber].shoutout+'</p>');
-    $('#thePhirephitersList').fadeIn();
-    //$('#thePhirephitersList').append('<img src="'+array[clickNumber].image+'" alt="person image" />');
-  }
 
-// builds the visual indicator elements
-function buildIndicatorUnits(array){
+
+//Build our array of people from the JSON object
+function buildShoutOutPeepsArray(array){
   for (var i = 0; i < array.length; i++) {
-    $('#progressIndicator').append('<div class="indicatorUnit" data-indexnumber="'+i+'"></div>')
+  peopleArray.push(array[i]);
   }
 }
 
-//changes the highlighted indicator box
-function toggleHighlighting(){
-  $('[data-indexnumber="'+clickNumber+'"]').toggleClass('highlight');
+//writes out each person's info and shout-out when called.
+function appendPersonToDom(person){
+    $('#thePhirephitersList').append('<p class="thankYouContent" id="personName">Name: '+person.name+'</p>');
+    $('#thePhirephitersList').append('<p class="thankYouContent" id="personGitUserName">git_username: '+person.git_username+'</p>');
+    $('#thePhirephitersList').append('<p class="thankYouContent" id="personShoutout">shoutout: '+person.shoutout+'</p>');
+    $('.thankYouContent').fadeIn(3000)
 }
 
-function goToNextThankYou(array){
+//writes a person's info to the DOM
+function buildTheDOM(array){
+  console.log('buildTheDOM called');
+    appendPersonToDom(array[clickNumber]);
+  }
 
+//What to do after each button press. Clear the Div and write a new person.
+function cyclingThroughPeeps(){
+  $('#thePhirephitersList').empty();
+  buildTheDOM(peopleArray);
+}
+
+//builds the position indicator squares for each person in the peson
+function buildIndicatorUnits(array){
+console.log('running Build inidcator units against: ',array.length);
+  for (var i = 0; i < array.length; i++) {
+    $('#progressIndicator').append('<div class="indicatorUnit" id="'+i+'"></div>');
+    $('#'+i+'').css('background-image','url("'+array[i].image+'")')
+    }
+}
+
+//toggles whether or not a visual indicator div is highlighted
+function toggleHighlighting(){
+  $('[id="'+clickNumber+'"]').toggleClass('highlight');
+}
+
+//helps loop the highlighted visual element around when next or previous is clicked.
+function minMaxCheck(array){
+  if(clickNumber > array.length - 1){
+    clickNumber = 0;
+  } else if (clickNumber < 0){
+    clickNumber = array.length - 1;
+  }
+}
+
+//nextButton actions
+function nextPhirephiter(array){
   toggleHighlighting();
   clickNumber++;
-  if(clickNumber > array.length - 1){
-      clickNumber = 0;
-    };
-  $('#thePhirephitersList').fadeOut()
-  $('#thePhirephitersList').empty();
-  writeShoutOutsToDom(array);
-  toggleHighlighting();
-  }
-
-function goToPrevThankYou(array){
-  toggleHighlighting();
-  clickNumber--;
-  if(clickNumber < 0){
-      clickNumber = array.length - 1;
-    };
-  $('#thePhirephitersList').empty();
-  writeShoutOutsToDom(array)
+  minMaxCheck(array);
+  cyclingThroughPeeps();
   toggleHighlighting();
 }
-//end
+
+//previous actions
+function previousPhirephiter(array){
+toggleHighlighting();
+clickNumber--;
+minMaxCheck(array);
+cyclingThroughPeeps();
+toggleHighlighting();
+}
+
+//
