@@ -56,7 +56,6 @@ function appendPersonToDom(person){
 
 //writes a person's info to the DOM
 function buildTheDOM(array){
-  console.log('buildTheDOM called');
     appendPersonToDom(array[clickNumber]);
   }
 
